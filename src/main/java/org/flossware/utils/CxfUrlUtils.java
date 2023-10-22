@@ -1,4 +1,4 @@
-package org.flossware.java.utils;
+package org.flossware.utils;
 
 import jakarta.xml.ws.BindingProvider;
 

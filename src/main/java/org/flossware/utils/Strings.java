@@ -1,4 +1,4 @@
-package org.flossware.java.utils;
+package org.flossware.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

@@ -1,4 +1,4 @@
-package org.flossware.java.soap;
+package org.flossware.soap;
 
 import jakarta.xml.ws.Service;
 
