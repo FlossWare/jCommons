@@ -7,5 +7,5 @@ import jakarta.xml.ws.Service;
  * 
  * @author sfloess
  */
-public record CxfSoap(Service service, Class portType) {
+public record Soap(Service service, Class portType) {
 }
