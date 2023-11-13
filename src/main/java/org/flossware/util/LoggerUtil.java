@@ -84,7 +84,7 @@ public final class LoggerUtil {
         final StringWriter sw = new StringWriter();
         try (final PrintWriter pw = new PrintWriter(sw)) {
             throwable.printStackTrace(pw);
-            final String toLog = StringsUtil.concat(str, System.getProperty("line.separator"), sw.toString());
+            final String toLog = StringUtil.concat(str, System.getProperty("line.separator"), sw.toString());
             logger.log(level, toLog, objs);
         }
     }

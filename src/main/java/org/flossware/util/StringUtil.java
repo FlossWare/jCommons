@@ -22,13 +22,11 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author sfloess
  */
-public class StringsUtil {
-    public static final String STRING_CANNOT_BE_BLANK = "String cannot be blank!";
-
-        /**
+public class StringUtil {
+    /**
      * Our logger.
      */
-    private static final Logger logger = Logger.getLogger(StringUtils.class.getName());
+    private static final Logger logger = Logger.getLogger(StringUtil.class.getName());
 
     /**
      * Return the logger.
@@ -37,10 +35,12 @@ public class StringsUtil {
         return logger;
     }
 
+    public static final String STRING_CANNOT_BE_BLANK = "String cannot be blank!";
+
     /**
      * Default separator.
      */
-    private static final String DEFAULT_SEPARATOR = "";
+    public static final String DEFAULT_SEPARATOR = "";
 
     public static String requireNonBlank(final String string, final String message) {
         if (StringUtils.isBlank(string)) {
@@ -100,7 +100,7 @@ public class StringsUtil {
      * @throws IllegalArgumentException if <code>object</code> is null.
      */
     public static String ensureString(final String str) throws IllegalArgumentException {
-        return ensureString(str, ObjectsUtil.DEFAULT_ERROR_MSG);
+        return ensureString(str, ObjectUtil.DEFAULT_ERROR_MSG);
     }
 
     /**
@@ -129,7 +129,7 @@ public class StringsUtil {
      * @return the string builder with concatendated data.
      */
     public static StringBuilder concatWithSeparator(final StringBuilder stringBuilder, final boolean isSeparatorAtEnd, final String separator, Object... objs) {
-        ArraysUtil.ensureArray(objs, "Must have a list of objects to concat!");
+        ArrayUtil.ensureArray(objs, "Must have a list of objects to concat!");
 
         for (int index = 0; index < objs.length; index++) {
             stringBuilder.append(objs[index]);
@@ -357,6 +357,6 @@ public class StringsUtil {
     /**
      * Default constructor not allowed
      */
-    private StringsUtil() {
+    private StringUtil() {
     }
 }

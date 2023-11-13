@@ -1,6 +1,7 @@
 package org.flossware.util;
 
 import jakarta.xml.ws.BindingProvider;
+import java.util.logging.Logger;
 import org.apache.cxf.frontend.ClientProxy;
 
 /**
@@ -8,7 +9,16 @@ import org.apache.cxf.frontend.ClientProxy;
  * @author sfloess
  */
 public final class SoapUtil {
-    private SoapUtil() {
+    /**
+     * Our logger.
+     */
+    private static final Logger logger = Logger.getLogger(SoapUtil.class.getName());
+
+    /**
+     * Return the logger.
+     */
+    private static Logger getLogger() {
+        return logger;
     }
 
     public static void setHeader(final Object service, final String name, final Object headerValue) {
@@ -21,5 +31,8 @@ public final class SoapUtil {
         ((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url);
 
         return port;
+    }
+
+    private SoapUtil() {
     }
 }

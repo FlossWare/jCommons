@@ -17,13 +17,23 @@
 package org.flossware.util;
 
 import java.util.Objects;
+import java.util.logging.Logger;
 
 /**
  * Utility class for class functionality.
  *
  * @author sfloess
  */
-public final class ClassesUtil {
+public final class ClassUtil {
+    /**
+     * Default minimum size for an array.
+     */
+    public static final int DEFAULT_MIN_ARRAY_LENGTH = 1;
+
+    /**
+     * Our logger.
+     */
+    private static final Logger logger = Logger.getLogger(ClassUtil.class.getName());
 
     /**
      * Compute the package for klass.
@@ -51,6 +61,6 @@ public final class ClassesUtil {
     /**
      * Default constructor not allowed.
      */
-    private ClassesUtil() {
+    private ClassUtil() {
     }
 }

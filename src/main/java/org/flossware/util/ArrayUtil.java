@@ -17,17 +17,30 @@
 package org.flossware.util;
 
 import java.util.Objects;
+import java.util.logging.Logger;
 
 /**
  * Array utility class.
  *
  * @author flossware
  */
-public class ArraysUtil {
+public class ArrayUtil {
     /**
      * Default minimum size for an array.
      */
     public static final int DEFAULT_MIN_ARRAY_LENGTH = 1;
+
+    /**
+     * Our logger.
+     */
+    private static final Logger logger = Logger.getLogger(ArrayUtil.class.getName());
+
+    /**
+     * Return the logger.
+     */
+    private static Logger getLogger() {
+        return logger;
+    }
 
     /**
      * Ensure an array has something in it.
@@ -69,7 +82,7 @@ public class ArraysUtil {
      * @throws IllegalArgumentException if values has any nulls or does not have at least 1 element.
      */
     public static <V> V[] ensureArray(final V[] values, final int minLength) throws IllegalArgumentException {
-        return ensureArray(values, minLength, ObjectsUtil.DEFAULT_ERROR_MSG);
+        return ensureArray(values, minLength, ObjectUtil.DEFAULT_ERROR_MSG);
     }
 
     /**
@@ -100,12 +113,12 @@ public class ArraysUtil {
      * @throws IllegalArgumentException if values has any nulls or does not have at least 1 element.
      */
     public static <V> V[] ensureArray(final V[] values) throws IllegalArgumentException {
-        return ensureArray(values, ObjectsUtil.DEFAULT_ERROR_MSG);
+        return ensureArray(values, ObjectUtil.DEFAULT_ERROR_MSG);
     }
 
     /**
      * Default constructor not allowed
      */
-    private ArraysUtil() {
+    private ArrayUtil() {
     }
 }
