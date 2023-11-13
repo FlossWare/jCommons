@@ -1,4 +1,4 @@
-package org.flossware.utils;
+package org.flossware.util;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -12,15 +12,17 @@ import java.util.stream.Collectors;
  *
  * @author sfloess
  */
-public class Methods {
+public class MethodsUtil {
     public static List<Method> findMethodsForAnnotationClass(final Class klass, final Class annotationClass) {
+        // To do:  param validation
         return Arrays.stream(klass.getMethods()).filter(t -> {return t.isAnnotationPresent(annotationClass);}).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public static List<Method> findMethodsForAnnotation(final Class klass, final Annotation annotation) {
+        // To do:  param valdation
         return findMethodsForAnnotationClass(klass, annotation.getClass());
     }
 
-    private Methods() {
+    private MethodsUtil() {
     }
 }
