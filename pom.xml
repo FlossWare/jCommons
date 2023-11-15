@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.flossware</groupId>
-    <artifactId>java</artifactId>
+    <artifactId>commons</artifactId>
     <version>1.0</version>
 
-    <name>FlossWare Java Library</name>
-    <description>This project is a collection of Java related functionality.</description>
+    <name>FlossWare Java Commons Library</name>
+    <description>This project is a collection of shareable Java related functionality.</description>
 
     <url>https://github.com/FlossWare/java</url>
 
