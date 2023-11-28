@@ -21,6 +21,9 @@ public final class SoapUtil {
         return logger;
     }
 
+    private SoapUtil() {
+    }
+
     public static void setHeader(final Object service, final String name, final Object headerValue) {
         // To do:  var checks
         ClientProxy.getClient(service).getRequestContext().put(name, headerValue);
@@ -31,8 +34,5 @@ public final class SoapUtil {
         ((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url);
 
         return port;
-    }
-
-    private SoapUtil() {
     }
 }

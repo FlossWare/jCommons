@@ -15,11 +15,6 @@ import java.util.stream.Collectors;
  */
 public class MethodUtil {
     /**
-     * Default minimum size for an array.
-     */
-    public static final int DEFAULT_MIN_ARRAY_LENGTH = 1;
-
-    /**
      * Our logger.
      */
     private static final Logger logger = Logger.getLogger(MethodUtil.class.getName());
@@ -33,7 +28,7 @@ public class MethodUtil {
 
     private MethodUtil() {
     }
-    
+
     public static List<Method> findMethodsForAnnotationClass(final Class klass, final Class annotationClass) {
         // To do:  param validation
         return Arrays.stream(klass.getMethods()).filter(t -> {return t.isAnnotationPresent(annotationClass);}).collect(Collectors.toCollection(ArrayList::new));
