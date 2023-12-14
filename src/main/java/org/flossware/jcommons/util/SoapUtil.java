@@ -1,4 +1,4 @@
-package org.flossware.commons.util;
+package org.flossware.jcommons.util;
 
 import jakarta.xml.ws.BindingProvider;
 import java.util.logging.Logger;

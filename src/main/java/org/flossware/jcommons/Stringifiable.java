@@ -1,4 +1,4 @@
-package org.flossware.commons;
+package org.flossware.jcommons;
 
 /**
  *

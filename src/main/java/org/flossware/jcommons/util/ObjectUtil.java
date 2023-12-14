@@ -1,5 +1,6 @@
-package org.flossware.commons.util;
+package org.flossware.jcommons.util;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 /**
@@ -42,6 +43,6 @@ public final class ObjectUtil {
      * @return the package for object.
      */
     public static String getPackage(final Object object) {
-        return ClassUtil.getPackageName(java.util.Objects.requireNonNull(object, "Must have an object!").getClass());
+        return ClassUtil.getPackageName(Objects.requireNonNull(object, "Must have an object!").getClass());
     }
 }

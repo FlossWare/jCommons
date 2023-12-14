@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.flossware.commons.util;
+package org.flossware.jcommons.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,19 +25,18 @@ import java.util.Objects;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.flossware.commons.io.IOException;
-import org.flossware.commons.io.IOUtils;
+import org.flossware.jcommons.io.IOException;
 
 /**
  * Properties utility class.
  *
  * @author Scot P. Floess
  */
-public final class PropertiesUtil {
+public final class PropertyUtil {
     /**
      * Our logger.
      */
-    private static final Logger LOGGER = Logger.getLogger(PropertiesUtil.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PropertyUtil.class.getName());
 
 
     /**
@@ -52,7 +51,7 @@ public final class PropertiesUtil {
     /**
      * Default constructor not allowed.
      */
-    private PropertiesUtil() {
+    private PropertyUtil() {
     }
 
 
@@ -88,25 +87,25 @@ public final class PropertiesUtil {
         }
     }
 
-    public static Properties createPropertiesInputStream(final InputStream inputStream, final boolean closeStream) {
+    public static Properties createPropertiesFromInputStream(final InputStream inputStream, final boolean closeStream) {
         return populatePropertiesFromInputStream(new Properties(), inputStream, closeStream);
     }
 
-    public static Properties createPropertiesInputStream(final InputStream inputStream) {
-        return createPropertiesInputStream(inputStream, false);
+    public static Properties createPropertiesFromInputStream(final InputStream inputStream) {
+        return createPropertiesFromInputStream(inputStream, false);
     }
 
     public static Properties createPropertiesFromReader(final Reader reader, final boolean closeStream) {
         return populatePropertiesFromReader(new Properties(), reader, closeStream);
     }
 
-    public static Properties createPropertiesReader(final Reader reader) {
-        return createPropertiesFromReader(reader, false);
+    public static Properties createPropertiesFromReader(final Reader reader) {
+        return PropertyUtil.createPropertiesFromReader(reader, false);
     }
 
     public static Properties createPropertiesFromFile(final File file) {
         try {
-            return createPropertiesInputStream(new FileInputStream(Objects.requireNonNull(file, "Must provide a file!")), true);
+            return createPropertiesFromInputStream(new FileInputStream(Objects.requireNonNull(file, "Must provide a file!")), true);
         } catch (final FileNotFoundException fileNotFoundException) {
             LoggerUtil.log(getLogger(), Level.WARNING, "Trouble reading input stream!", fileNotFoundException);
 
@@ -115,6 +114,6 @@ public final class PropertiesUtil {
     }
 
     public static Properties createPropertiesFromResources(final String resource) {
-        return createPropertiesInputStream(PropertiesUtil.class.getResourceAsStream(resource), true);
+        return createPropertiesFromInputStream(PropertyUtil.class.getResourceAsStream(resource), true);
     }
 }

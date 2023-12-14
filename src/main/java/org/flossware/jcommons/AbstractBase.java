@@ -14,11 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.flossware.commons;
+package org.flossware.jcommons;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.flossware.commons.util.LoggerUtil;
+import org.flossware.jcommons.util.LoggerUtil;
 
 /**
  * An abstract base class that can be used to conveniently extends to get common functionality (for example a logger).

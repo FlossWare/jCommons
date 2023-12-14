@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.flossware.commons.io;
+package org.flossware.jcommons.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,24 +22,23 @@ import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.flossware.commons.util.LoggerUtil;
-import org.flossware.commons.util.StringUtil;
+import org.flossware.jcommons.io.FileException;
 
 /**
  * A file utility class.
  *
  * @author Scot P. Floess
  */
-public final class FileUtils {
+public final class FileUtil {
     /**
      * Our logger.
      */
-    private static final Logger LOGGER = Logger.getLogger(FileUtils.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(FileUtil.class.getName());
 
     /**
      * Default constructor not allowed.
      */
-    private FileUtils() {
+    private FileUtil() {
     }
 
     /**
@@ -93,7 +92,7 @@ public final class FileUtils {
      *
      * @throws IllegalArgumentException if file does not exist.
      */
-    public static File ensureFile(final File file) {
+    public static File ensureFileExists(final File file) {
         Objects.requireNonNull(file, "Cannot ensure a null file!");
 
         if (!file.exists()) {
@@ -112,7 +111,7 @@ public final class FileUtils {
      *
      * @throws IllegalArgumentException if file does not exist.
      */
-    public static File ensureFile(final String file) {
-        return ensureFile(new File(StringUtil.ensureString(file, "Cannot ensure an empty file name!")));
+    public static File ensureFileExists(final String file) {
+        return ensureFileExists(new File(StringUtil.ensureString(file, "Cannot ensure an empty file name!")));
     }
 }
