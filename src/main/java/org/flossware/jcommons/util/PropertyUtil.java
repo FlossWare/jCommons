@@ -55,10 +55,10 @@ public final class PropertyUtil {
     }
 
 
-    static Properties populatePropertiesFromInputStream(final Properties retVal, final InputStream inputStream, final boolean closeStream) {
+    static Properties populateFromInputStream(final Properties retVal, final InputStream inputStream, final boolean closeStream) {
         try {
             retVal.load(Objects.requireNonNull(inputStream, "Must provide an input stream!"));
-            
+
             return retVal;
         } catch (final Exception exception) {
             LoggerUtil.log(getLogger(), Level.WARNING, "Trouble reading input stream!", exception);
@@ -71,7 +71,7 @@ public final class PropertyUtil {
         }
     }
 
-    static Properties populatePropertiesFromReader(final Properties retVal, final Reader reader, final boolean closeStream) {
+    static Properties populateFromReader(final Properties retVal, final Reader reader, final boolean closeStream) {
         try {
             retVal.load(Objects.requireNonNull(reader, "Must provide a reader!"));
 
@@ -87,25 +87,25 @@ public final class PropertyUtil {
         }
     }
 
-    public static Properties createPropertiesFromInputStream(final InputStream inputStream, final boolean closeStream) {
-        return populatePropertiesFromInputStream(new Properties(), inputStream, closeStream);
+    public static Properties fromInputStream(final InputStream inputStream, final boolean closeStream) {
+        return populateFromInputStream(new Properties(), inputStream, closeStream);
     }
 
-    public static Properties createPropertiesFromInputStream(final InputStream inputStream) {
-        return createPropertiesFromInputStream(inputStream, false);
+    public static Properties fromInputStream(final InputStream inputStream) {
+        return fromInputStream(inputStream, false);
     }
 
-    public static Properties createPropertiesFromReader(final Reader reader, final boolean closeStream) {
-        return populatePropertiesFromReader(new Properties(), reader, closeStream);
+    public static Properties fromReader(final Reader reader, final boolean closeStream) {
+        return populateFromReader(new Properties(), reader, closeStream);
     }
 
-    public static Properties createPropertiesFromReader(final Reader reader) {
-        return PropertyUtil.createPropertiesFromReader(reader, false);
+    public static Properties fromReader(final Reader reader) {
+        return PropertyUtil.fromReader(reader, false);
     }
 
     public static Properties createPropertiesFromFile(final File file) {
         try {
-            return createPropertiesFromInputStream(new FileInputStream(Objects.requireNonNull(file, "Must provide a file!")), true);
+            return fromInputStream(new FileInputStream(Objects.requireNonNull(file, "Must provide a file!")), true);
         } catch (final FileNotFoundException fileNotFoundException) {
             LoggerUtil.log(getLogger(), Level.WARNING, "Trouble reading input stream!", fileNotFoundException);
 
@@ -114,6 +114,6 @@ public final class PropertyUtil {
     }
 
     public static Properties createPropertiesFromResources(final String resource) {
-        return createPropertiesFromInputStream(PropertyUtil.class.getResourceAsStream(resource), true);
+        return fromInputStream(PropertyUtil.class.getResourceAsStream(resource), true);
     }
 }
