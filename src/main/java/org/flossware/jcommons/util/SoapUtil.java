@@ -1,7 +1,10 @@
 package org.flossware.jcommons.util;
 
 import jakarta.xml.ws.BindingProvider;
+import jakarta.xml.ws.Service;
+import jakarta.xml.ws.WebServiceClient;
 import java.util.logging.Logger;
+import javax.xml.namespace.QName;
 import org.apache.cxf.frontend.ClientProxy;
 
 /**
@@ -34,5 +37,22 @@ public final class SoapUtil {
         ((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url);
 
         return port;
+    }
+
+    public static QName computeQName(final WebServiceClient webServiceClient) {
+                // To do:  var checks
+        return new QName(webServiceClient.targetNamespace(), webServiceClient.name());
+    }
+
+    public static QName computeQName(final Class klass) {
+                // To do:  var checks
+        return computeQName((WebServiceClient) klass.getAnnotation(WebServiceClient.class));
+    }
+
+    public static QName computeQName(final Service service) {
+                // To do:  var checks
+        return computeQName(service.getClass());
+
+//.getAnnotation(WebServiceClient.class));
     }
 }
