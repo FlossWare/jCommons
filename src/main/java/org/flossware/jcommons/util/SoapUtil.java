@@ -44,7 +44,7 @@ public final class SoapUtil {
         return new QName(webServiceClient.targetNamespace(), webServiceClient.name());
     }
 
-    public static QName computeQName(final Class klass) {
+    public static QName computeQName(final Class<? extends Service> klass) {
                 // To do:  var checks
         return computeQName((WebServiceClient) klass.getAnnotation(WebServiceClient.class));
     }
@@ -52,7 +52,5 @@ public final class SoapUtil {
     public static QName computeQName(final Service service) {
                 // To do:  var checks
         return computeQName(service.getClass());
-
-//.getAnnotation(WebServiceClient.class));
     }
 }
