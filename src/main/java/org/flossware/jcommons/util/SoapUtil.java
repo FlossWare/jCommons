@@ -3,9 +3,11 @@ package org.flossware.jcommons.util;
 import jakarta.xml.ws.BindingProvider;
 import jakarta.xml.ws.Service;
 import jakarta.xml.ws.WebServiceClient;
+import java.util.Arrays;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
 import org.apache.cxf.frontend.ClientProxy;
+import org.apache.cxf.headers.Header;
 
 /**
  *
@@ -27,10 +29,21 @@ public final class SoapUtil {
     private SoapUtil() {
     }
 
-    public static void setHeader(final Object service, final String name, final Object headerValue) {
+    public static void setHeader(final Service service, final String name, final Object headerValue) {
         // To do:  var checks
         ClientProxy.getClient(service).getRequestContext().put(name, headerValue);
     }
+
+    public static void setHeader(final Service service, final QName qname, final Object headerValue) {
+        // To do:  var checks
+        setHeader(service, Header.HEADER_LIST, new Header(qname, headerValue));
+    }
+
+    public static void setHeaders(final Service service, final Header... headers) {
+            // To do:  var checks
+        setHeader(service, Header.HEADER_LIST, Arrays.asList(headers));
+    }
+
 
     public static <T> T setUrl(final T port, final String url) {
                 // To do:  var checks
