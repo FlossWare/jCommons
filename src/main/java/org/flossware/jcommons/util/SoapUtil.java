@@ -1,9 +1,13 @@
 package org.flossware.jcommons.util;
 
+import jakarta.xml.soap.SOAPException;
+import jakarta.xml.soap.SOAPFactory;
 import jakarta.xml.ws.BindingProvider;
 import jakarta.xml.ws.Service;
 import jakarta.xml.ws.WebServiceClient;
 import java.util.Arrays;
+import java.util.function.Supplier;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
 import org.apache.cxf.frontend.ClientProxy;
@@ -19,6 +23,43 @@ public final class SoapUtil {
      */
     private static final Logger logger = Logger.getLogger(SoapUtil.class.getName());
 
+    private static final Supplier<SOAPFactory> soapFactorySupplier;
+
+    private static class SoapFactorySupplier implements Supplier<SOAPFactory> {
+        final SOAPFactory soapFactory;
+
+        SoapFactorySupplier(final SOAPFactory soapFactory) {
+            this.soapFactory = soapFactory;
+        }
+
+        @Override
+        public SOAPFactory get() {
+            return soapFactory;
+        }
+    }
+
+
+    private static class NoSoapFactorySupplier implements Supplier<SOAPFactory> {
+        @Override
+        public SOAPFactory get() {
+            throw new SoapException("Could not instantiate soap factory!");
+        }
+    }
+
+    static {
+        Supplier<SOAPFactory> factory;
+
+        try {
+            factory = new SoapFactorySupplier(SOAPFactory.newInstance());
+        } catch(final SOAPException soapException) {
+            factory = new NoSoapFactorySupplier();
+
+            logger.log(Level.SEVERE, "Could not instantiate soap factory!", soapException);
+        }
+
+        soapFactorySupplier = factory;
+    }
+
     /**
      * Return the logger.
      */
@@ -27,6 +68,10 @@ public final class SoapUtil {
     }
 
     private SoapUtil() {
+    }
+
+    public static SOAPFactory getSoapFactory() {
+        return soapFactorySupplier.get();
     }
 
     public static void setHeader(final Service service, final String name, final Object headerValue) {
