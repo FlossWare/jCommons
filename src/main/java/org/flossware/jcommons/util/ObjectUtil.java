@@ -1,5 +1,6 @@
-package org.flossware.commons.util;
+package org.flossware.jcommons.util;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 /**
@@ -10,11 +11,6 @@ import java.util.logging.Logger;
  *
  */
 public final class ObjectUtil {
-    /**
-     * Default minimum size for an array.
-     */
-    public static final int DEFAULT_MIN_ARRAY_LENGTH = 1;
-
     /**
      * Our logger.
      */
@@ -32,6 +28,13 @@ public final class ObjectUtil {
      */
     public static final String DEFAULT_ERROR_MSG = "Invalid value";
 
+
+    /**
+     * Default constructor not allowed.
+     */
+    private ObjectUtil() {
+    }
+
     /**
      * Compute the package for object.
      *
@@ -40,12 +43,6 @@ public final class ObjectUtil {
      * @return the package for object.
      */
     public static String getPackage(final Object object) {
-        return ClassUtil.getPackageName(java.util.Objects.requireNonNull(object, "Must have an object!").getClass());
-    }
-
-    /**
-     * Default constructor not allowed.
-     */
-    private ObjectUtil() {
+        return ClassUtil.getPackageName(Objects.requireNonNull(object, "Must have an object!").getClass());
     }
 }

@@ -1,4 +1,4 @@
-package org.flossware.commons.soap;
+package org.flossware.jcommons.soap;
 
 import jakarta.xml.ws.Service;
 

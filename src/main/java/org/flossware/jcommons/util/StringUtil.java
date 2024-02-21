@@ -1,4 +1,4 @@
-package org.flossware.commons.util;
+package org.flossware.jcommons.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -26,7 +26,7 @@ public class StringUtil {
     /**
      * Our logger.
      */
-    private static final Logger logger = Logger.getLogger(StringUtil.class.getName());
+    private static final Logger logger = Logger.getLogger(StringUtils.class.getName());
 
     /**
      * Return the logger.
@@ -352,6 +352,38 @@ public class StringUtil {
         }
 
         return null;
+    }
+
+    /**
+     * Generates a unique string with the string's prefix being prefix and suffix being suffix.
+     *
+     * @param prefix the prefix.
+     * @param suffix the suffix.
+     *
+     * @return a unique string containing prefix as prefix and suffix as suffix.
+     */
+    public static final String generateUniqueString(final String prefix, final String suffix) {
+        return prefix + System.currentTimeMillis() + suffix;
+    }
+
+    /**
+     * Generate a unique string with prefix as the prefix.
+     *
+     * @param prefix the prefix.
+     *
+     * @return a unique string containing prefix as prefix.
+     */
+    public static final String generateUniqueString(final String prefix) {
+        return StringUtil.generateUniqueString(prefix, "");
+    }
+
+    /**
+     * Generate a unique string.
+     *
+     * @return a unique string.
+     */
+    public static final String generateUniqueString() {
+        return StringUtil.generateUniqueString("");
     }
 
     /**
