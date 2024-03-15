@@ -5,7 +5,7 @@
 
     <groupId>org.flossware</groupId>
     <artifactId>commons</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <name>FlossWare Java Commons Library</name>
     <description>This project is a collection of shareable Java related functionality.</description>
@@ -116,4 +116,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <distributionManagement>
+        <repository>
+            <id>packagecloud-solenopsis</id>
+            <name>packagecloud-solenopsis</name>
+            <url>https://packagecloud.io/solenopsis/java/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>

@@ -17,8 +17,6 @@
 package org.flossware.jcommons.util;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.util.Objects;
@@ -71,7 +69,7 @@ public final class PropertyUtil {
         }
     }
 
-    static Properties populateFromReader(final Properties retVal, final Reader reader, final boolean closeStream) {
+    static Properties populateFromReader(final Properties retVal, final Reader reader, final boolean closeReader) {
         try {
             retVal.load(Objects.requireNonNull(reader, "Must provide a reader!"));
 
@@ -81,7 +79,7 @@ public final class PropertyUtil {
 
             throw new IOException(exception);
         } finally {
-            if (closeStream) {
+            if (closeReader) {
                 IOUtils.close(reader);
             }
         }
@@ -95,25 +93,23 @@ public final class PropertyUtil {
         return fromInputStream(inputStream, false);
     }
 
-    public static Properties fromReader(final Reader reader, final boolean closeStream) {
-        return populateFromReader(new Properties(), reader, closeStream);
+    public static Properties fromResource(final String resource) {
+        return fromInputStream(PropertyUtil.class.getClassLoader().getResourceAsStream(resource), true);
+    }
+
+    public static Properties fromReader(final Reader reader, final boolean closeReader) {
+        return populateFromReader(new Properties(), reader, closeReader);
     }
 
     public static Properties fromReader(final Reader reader) {
         return PropertyUtil.fromReader(reader, false);
     }
 
-    public static Properties createPropertiesFromFile(final File file) {
-        try {
-            return fromInputStream(new FileInputStream(Objects.requireNonNull(file, "Must provide a file!")), true);
-        } catch (final FileNotFoundException fileNotFoundException) {
-            LoggerUtil.log(getLogger(), Level.WARNING, "Trouble reading input stream!", fileNotFoundException);
-
-            throw new IOException(fileNotFoundException);
-        }
+    public static Properties fromFile(final File file) {
+        return PropertyUtil.fromFile(file);
     }
 
-    public static Properties createPropertiesFromResources(final String resource) {
-        return fromInputStream(PropertyUtil.class.getResourceAsStream(resource), true);
+    public static Properties fromFile(final String filename) {
+        return PropertyUtil.fromFile(filename);
     }
 }
