@@ -119,9 +119,9 @@
     
     <distributionManagement>
         <repository>
-            <id>packagecloud-solenopsis</id>
-            <name>packagecloud-solenopsis</name>
-            <url>https://packagecloud.io/solenopsis/java/maven2/</url>
+            <id>packagecloud-flossware</id>
+            <name>packagecloud-flossware</name>
+            <url>https://packagecloud.io/flossware/java/maven2/</url>
         </repository>
     </distributionManagement>
 </project>
