@@ -1,6 +1,6 @@
-package org.flossware.jcommons;
+package org.flossware.commons;
 
-import org.flossware.jcommons.util.StringUtil;
+import org.flossware.commons.util.StringUtil;
 
 /**
  *

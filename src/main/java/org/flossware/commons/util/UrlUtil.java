@@ -1,4 +1,4 @@
-package org.flossware.jcommons.util;
+package org.flossware.commons.util;
 
 import java.net.MalformedURLException;
 import java.net.URL;

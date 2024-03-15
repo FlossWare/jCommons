@@ -1,4 +1,4 @@
-package org.flossware.jcommons.util;
+package org.flossware.commons.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

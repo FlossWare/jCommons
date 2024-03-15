@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.flossware.jcommons.util;
+package org.flossware.commons.util;
 
 import java.io.File;
 import java.io.InputStream;
@@ -23,7 +23,7 @@ import java.util.Objects;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.flossware.jcommons.io.IOException;
+import org.flossware.commons.io.IOException;
 
 /**
  * Properties utility class.

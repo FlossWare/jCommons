@@ -1,4 +1,4 @@
-package org.flossware.jcommons.util;
+package org.flossware.commons.util;
 
 import jakarta.xml.soap.SOAPException;
 import jakarta.xml.soap.SOAPFactory;

@@ -1,5 +1,5 @@
 
-package org.flossware.jcommons.util;
+package org.flossware.commons.util;
 
 /**
  *
