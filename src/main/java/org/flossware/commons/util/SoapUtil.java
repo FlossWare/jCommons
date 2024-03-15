@@ -2,14 +2,14 @@ package org.flossware.commons.util;
 
 import jakarta.xml.soap.SOAPException;
 import jakarta.xml.soap.SOAPFactory;
-import jakarta.xml.ws.BindingProvider;
-import jakarta.xml.ws.Service;
-import jakarta.xml.ws.WebServiceClient;
 import java.util.Arrays;
 import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.Service;
+import javax.xml.ws.WebServiceClient;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.headers.Header;
 

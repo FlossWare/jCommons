@@ -20,7 +20,7 @@
         </license>
     </licenses>
 
-	<packaging>jar</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,7 +39,8 @@
         <maven.compiler.target>17</maven.compiler.target>
 
         <org.apache.commons_commons-lang3>3.12.0</org.apache.commons_commons-lang3>
-        <org.apache.cxf_rt-frontend-jaxws>4.0.3</org.apache.cxf_rt-frontend-jaxws>
+        <jakarta.xml.soap_jakarta.xml.soap-api>3.0.1</jakarta.xml.soap_jakarta.xml.soap-api>
+        <org.apache.cxf_rt-frontend-jaxws>3.3.2</org.apache.cxf_rt-frontend-jaxws>
 
         <org.junit.jupiter_junit-jupiter-api>5.10.0</org.junit.jupiter_junit-jupiter-api>
     </properties>
@@ -102,7 +103,12 @@
             <version>${org.apache.commons_commons-lang3}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-core -->
+        <dependency>
+            <groupId>jakarta.xml.soap</groupId>
+            <artifactId>jakarta.xml.soap-api</artifactId>
+            <version>${jakarta.xml.soap_jakarta.xml.soap-api}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -116,7 +122,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <distributionManagement>
         <repository>
             <id>packagecloud-flossware</id>
