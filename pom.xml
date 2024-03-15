@@ -5,7 +5,7 @@
 
     <groupId>org.flossware</groupId>
     <artifactId>commons</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
 
     <name>FlossWare Java Commons Library</name>
     <description>This project is a collection of shareable Java related functionality.</description>
