@@ -36,6 +36,12 @@ public final class ClassUtil {
     private static final Logger logger = Logger.getLogger(ClassUtil.class.getName());
 
     /**
+     * Default constructor not allowed.
+     */
+    private ClassUtil() {
+    }
+
+    /**
      * Compute the package for klass.
      *
      * @param klass the class for whom we desire a package.
@@ -57,10 +63,21 @@ public final class ClassUtil {
     public static <T> Class<T> getClass(final Object object) {
         return (Class<T>) Objects.requireNonNull(object, "Must have an object!").getClass();
     }
+//
+//    public static <T> T createInstanceProxy(final Class toProxy) {
+//        Objects.requireNonNull(toProxy, "Must provide a class to proxy!");
+//
+//        if(toPr)
+//
+//        for(final Class klassInterface : toProxy.getInterfaces()) {
+//
+//        }
+//    }
 
-    /**
-     * Default constructor not allowed.
-     */
-    private ClassUtil() {
+
+    public static <T> T createObjectProxy(final T toProxy) {
+        Objects.requireNonNull(toProxy, "Must provide an instance to proxy!");
+
+        return (T) new ObjectProxy(toProxy);
     }
 }

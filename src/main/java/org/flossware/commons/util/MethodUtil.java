@@ -42,7 +42,7 @@ public class MethodUtil {
 
     public static <T extends Annotation> T findAnnotationOnMethods(final Class klass, final Class annotationClass) {
         // To do:  param validation
-        
+
         for (final Method method : klass.getMethods()) {
             if (null != method.getAnnotation(annotationClass)) {
                 return (T) method.getAnnotation(annotationClass);
